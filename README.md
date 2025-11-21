@@ -62,7 +62,6 @@ A fundamentação deste experimento combina teorias clássicas com evidências r
 ---
 
 ### 2.4 Referencial teórico e empírico essencial
-Para mensurar os resultados, este estudo utiliza a seguinte taxonomia de erros e conceitos:
 
 - **Behavior Driven Development (BDD):** metodologia que utiliza a notação estruturada Gherkin para descrever comportamentos. O estudo foca no Gherkin como ferramenta de documentação para humanos, não apenas para máquinas.
 
