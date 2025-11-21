@@ -1,7 +1,7 @@
 ## 1. Identificação básica
 
 ### 1.1 Título do experimento
-**Análise Comparativa entre Notação Gherkin e Linguagem Natural em Critérios de Aceite: Impactos na Acurácia de Interpretação, Bugs e Retrabalho no Desenvolvimento de Software**
+**Notação Gherkin vs. Linguagem Natural: Impactos na Acurácia e Retrabalho em Critérios de Aceite**
 
 ### 1.2 ID / código
 **EXP-01**  
