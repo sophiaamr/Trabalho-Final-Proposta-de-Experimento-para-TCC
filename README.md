@@ -263,7 +263,6 @@ Fatores que podem ameaçar a validade externa:
 ---
 
 ### 6.2 Critérios de sucesso globais (go / no-go)
-Definição do que constitui uma execução bem-sucedida do experimento:
 
 - **Tamanho da amostra (mínimo):** obter ≥ 20 respostas válidas (10 por grupo) completas.  
   **Meta ideal:** ≥ 30 respostas válidas.
@@ -278,7 +277,6 @@ Definição do que constitui uma execução bem-sucedida do experimento:
 ---
 
 ### 6.3 Critérios de parada antecipada (pré-execução)
-Condições que, se detectadas, exigem interrupção ou redesenho do experimento antes da coleta em massa:
 
 - **Falha no teste piloto:** se participantes do piloto reportarem cenário incompreensível ou levarem > 40 minutos, o objeto de estudo (requisitos) deve ser reescrito/simplificado.
 
