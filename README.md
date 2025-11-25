@@ -82,7 +82,7 @@ A fundamentação deste experimento combina teorias clássicas com evidências r
 
 ### 3.1 Objetivo geral (Goal template)
 
-Analisar a implementação de lógica de interface baseada em requisitos escritos em Notação Gherkin e Linguagem Natural, Com o propósito de avaliar o tempo de desenvolvimento, a densidade de bugs de estado/validação e a corretude do comportamento do componente, sob o ponto de vista de desenvolvedores de software, no contexto de uma tarefa simulada de codificação de um componente rico de interface com regras complexas.
+Analisar a Notação Gherkin e a Linguagem Natural com o propósito de avaliação em relação ao tempo de desenvolvimento, à densidade de bugs de estado/validação e à corretude do comportamento, sob o ponto de vista de desenvolvedores de software, no contexto de uma tarefa simulada de codificação de um componente rico de interface com regras complexas.
 
 ### 3.2 Objetivos específicos
 
