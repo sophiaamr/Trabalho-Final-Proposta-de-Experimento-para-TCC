@@ -35,11 +35,11 @@ No ciclo de vida de desenvolvimento de software, a falha na engenharia de requis
 
 Atualmente, a indústria enfrenta um dilema na especificação desses critérios:
 
-Linguagem Natural: permite detalhamento narrativo e contexto (“Big Picture”) da experiência do usuário, mas sofre com ambiguidade sobre triggers de eventos e condições de exibição.
+Linguagem Natural: permite detalhamento narrativo e contexto da experiência do usuário, mas sofre com ambiguidade sobre triggers de eventos e condições de exibição.
 
 Notação Gherkin (BDD): busca remover a ambiguidade através de uma estrutura rígida (Dado/Quando/Então), mas impõe a fragmentação do comportamento da interface em múltiplos cenários desconectados.
 
-A oportunidade deste estudo reside em investigar se, ao fragmentar regras de interface para atender ao formalismo do Gherkin, não se está introduzindo um “ponto cego” cognitivo: a perda de contexto sobre o ciclo de vida do componente, levando a erros de omissão (ex.: esquecer de resetar um estado). O objetivo é determinar empiricamente qual formato oferece maior segurança para a corretude do comportamento visual e eficiência na implementação de lógica de interface.
+A oportunidade deste estudo reside em investigar se, ao fragmentar regras de interface para atender ao formalismo do Gherkin, não se está introduzindo um “ponto cego” cognitivo: a perda de contexto sobre o ciclo de vida do componente, levando a erros de omissão. O objetivo é determinar empiricamente qual formato oferece maior segurança para a corretude do comportamento visual e eficiência na implementação de lógica de interface.
 
 ---
 
@@ -49,11 +49,11 @@ O experimento será conduzido como um Estudo Controlado em Ambiente Acadêmico/S
 
 Cenário: simulação de uma etapa de implementação de Front-end de uma funcionalidade crítica.
 
-Participantes: o grupo amostral será composto por indivíduos com vivência técnica em desenvolvimento web (estudantes, desenvolvedores Front-end/Fullstack e QAs), divididos aleatoriamente em dois grupos de tratamento.
+Participantes: o grupo amostral será composto por desenvolvedores front-end e QA, divididos aleatoriamente em dois grupos de tratamento.
 
-Objeto de Estudo: serão utilizados critérios de aceite de um Componente Rico de Interface (ex.: Formulário de Cadastro Dinâmico ou Checkout), desenhados especificamente para conter desafios de gerenciamento de estado (loading, error, success, disabled) e validação condicional.
+Objeto de Estudo: serão utilizados critérios de aceite de um componente rico de interface, desenhados especificamente para conter desafios de gerenciamento de estado e validação condicional.
 
-Instrumentação: a coleta de dados será realizada via formulários eletrônicos onde os participantes deverão escrever a lógica de controle do componente (pseudocódigo ou script). O foco não é a estilização (CSS), mas sim a lógica de eventos, manipulação de estados e a densidade de bugs funcionais de interface inseridos.
+Instrumentação: a coleta de dados será realizada via formulários eletrônicos onde os participantes deverão escrever a lógica de controle do componente (pseudocódigo ou script). O foco não é a estilização, mas sim a lógica de eventos, manipulação de estados e a densidade de bugs funcionais de interface inseridos.
 
 ---
 
@@ -82,7 +82,7 @@ A fundamentação deste experimento combina teorias clássicas com evidências r
 
 ### 3.1 Objetivo geral (Goal template)
 
-Analisar a implementação de lógica de interface (Front-end) baseada em requisitos escritos em Notação Gherkin e Linguagem Natural, Com o propósito de avaliar o tempo de desenvolvimento, a densidade de bugs de estado/validação e a corretude do comportamento do componente, Sob o ponto de vista de desenvolvedores de software, No contexto de uma tarefa simulada de codificação de um componente rico de interface com regras complexas.
+Analisar a implementação de lógica de interface baseada em requisitos escritos em Notação Gherkin e Linguagem Natural, Com o propósito de avaliar o tempo de desenvolvimento, a densidade de bugs de estado/validação e a corretude do comportamento do componente, sob o ponto de vista de desenvolvedores de software, no contexto de uma tarefa simulada de codificação de um componente rico de interface com regras complexas.
 
 ### 3.2 Objetivos específicos
 
@@ -157,8 +157,6 @@ O4 (Retrabalho): Mensurar a necessidade de correções posteriores baseada na qu
 
 ### 4.1 Escopo funcional / de processo (incluído e excluído)
 
-O experimento delimita suas fronteiras para avaliar a lógica de interação e estados de interface, excluindo aspectos estéticos puramente visuais:
-
 **Incluído (Escopo do Experimento):**
 
 - **Lógica de Interação do Usuário:** Interpretação de regras sobre eventos de interface (clique, foco, digitação, hover).
@@ -187,17 +185,17 @@ O estudo caracteriza-se como um experimento controlado simulando o desenvolvimen
 
 Para a validade do experimento, assume-se que:
 
-- Os participantes compreendem o conceito de "Estados de Interface" (ex: loading, disabled, error).
-- A complexidade do cenário está na interatividade (o que acontece quando o usuário clica), e não na matemática.
-- O tempo reportado inclui a leitura da regra e a escrita da lógica do script (JS/TS/Pseudocódigo), ignorando o tempo de estilização.
+- Os participantes compreendem o conceito de "Estados de Interface" (loading, disabled, error, etc).
+- A complexidade do cenário está na interatividade.
+- O tempo reportado inclui a leitura da regra e a escrita da lógica do script, ignorando o tempo de estilização.
 
 
 ### 4.4 Restrições
 
 O desenho experimental respeita as seguintes limitações práticas:
 
-- **Abstração Visual:** Como o experimento é via formulário de texto, não é possível validar o "look and feel" visualmente. A validação será feita sobre a descrição lógica do comportamento (ex: "Se usuário clicar, então setar estado X").
-- **Independência de Framework:** O participante poderá escrever a solução pensando em React, Vue, Angular ou Vanilla JS, desde que a lógica de controle de estado esteja clara.
+- **Abstração Visual:** Como o experimento é via formulário de texto, não é possível validar o "look and feel" visualmente. A validação será feita sobre a descrição lógica do comportamento.
+- **Independência de Framework:** O participante poderá escrever a solução pensando em React, Vue, Angular, desde que a lógica de controle de estado esteja clara.
 - **Tempo de Execução:** Atividade limitada a 20–30 minutos para evitar fadiga cognitiva.
 
 
@@ -205,8 +203,8 @@ O desenho experimental respeita as seguintes limitações práticas:
 
 Fatores que podem ameaçar a validade externa:
 
-- **Subjetividade de UX:** Diferente do backend (onde 2+2=4), regras de interface em Linguagem Natural podem ser interpretadas de formas variadas dependendo da "bagagem de UX" do desenvolvedor, o que pode ser confundido com erro de interpretação.
-- **Falta de Protótipo Visual:** A ausência de um layout (Figma/Mockup) junto com o requisito textual pode aumentar a dificuldade artificialmente, já que no mundo real o Front-end quase sempre trabalha com requisitos + design visual.
+- **Subjetividade de UX:** Diferente do backend, regras de interface em Linguagem Natural podem ser interpretadas de formas variadas dependendo da "bagagem de UX" do desenvolvedor, o que pode ser confundido com erro de interpretação.
+- **Falta de Protótipo Visual:** A ausência de um layout (Figma) junto com o requisito textual pode aumentar a dificuldade artificialmente, já que no mundo real o Front-end quase sempre trabalha com requisitos + design visual.
 
 
 ## 5. Stakeholders, interesses e impactos
