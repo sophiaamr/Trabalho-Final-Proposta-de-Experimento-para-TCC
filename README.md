@@ -12,10 +12,11 @@
 **Histórico de revisão:**
 - **v1.0 (21/11/2025):** rascunho inicial com tema, escopo e motivação.
 - **v2.0 (24/11/2025):** entrega 2 + revisão da seção 2 
+- **v3.0 (26/11/2025):** seções 7,8,9
 
 ### 1.4 Datas (criação, última atualização)
 - **Data de criação:** 21/11/2025  
-- **Última atualização:** 21/11/2025
+- **Última atualização:** 26/11/2025
 
 ### 1.5 Autores (nome, área, contato)
 **Sophia Mendes Rabelo** — Engenharia de Software — contato: sophiamendesrabelo@gmail.com
@@ -103,54 +104,68 @@ O4 (Retrabalho): Mensurar a necessidade de correções posteriores baseada na qu
 
 **Q1.2:** A leitura de texto corrido (Linguagem Natural) atrasa o início da codificação devido à necessidade de extrair as regras de interação?  
 
-**Q1.3:** Existe diferença na produtividade (regras de interface codificadas por minuto) entre os grupos?  
+**Q1.3:** Existe diferença na produtividade entre os grupos?  
 
 
 ### Relacionadas ao O2 (Corretude de Estados)
 
-**Q2.1:** Qual grupo implementou o fluxo principal ("Happy Path" da interação) com maior taxa de sucesso?  
+**Q2.1:** Qual grupo implementou o fluxo principal com maior taxa de sucesso?  
 
-**Q2.2:** A estrutura do Gherkin garante que todas as transições de estado (ex: clicar -> carregar -> sucesso) sejam codificadas corretamente?  
+**Q2.2:** A estrutura do Gherkin garante que todas as transições de estado  sejam codificadas corretamente?  
 
+**Q2.3:** Existe diferença significativa na implementação de estados de exceção entre os grupos?
 
 ### Relacionadas ao O3 (Bugs e Exceções)
 
-**Q3.1:** Qual formato gerou mais bugs de omissão (ex: esquecer de bloquear um botão durante o envio ou esquecer de limpar uma mensagem de erro)?  
+**Q3.1:** Qual formato gerou mais bugs de omissão?  
 
-**Q3.2:** Qual formato gerou mais bugs de lógica condicional (ex: exibir mensagem de sucesso quando deveria exibir erro)?  
+**Q3.2:** Qual formato gerou mais bugs de lógica condicional?  
 
+**Q3.3:**: Há diferença significativa entre os formatos na taxa de falhas de validação de entrada em edge cases?
 
 ### Relacionadas ao O4 (Retrabalho)
 
 **Q4.1:** Quantas submissões de código seriam reprovadas em um Code Review por falharem em critérios de usabilidade ou validação?  
 
+**Q4.2**: Existe diferença significativa no esforço estimado (tempo) para corrigir os bugs gerados por cada formato?
+
+**Q4.3**: Os defeitos encontrados tendem a ser de qual severidade dependendo do formato utilizado?
 
 ### 3.4 Métricas associadas (GQM)
 
-| Objetivo      | Questão            | Métricas (IDs) | O que se espera medir                                              |
-|--------------|--------------------|----------------|---------------------------------------------------------------------|
-| O1. Eficiência | Q1.1 (Tempo Total)  | M01, M02       | Tempo decorrido entre receber o requisito e finalizar a lógica.     |
-|              | Q1.2 (Start-up)    | M01            | Impacto do formato na velocidade de entrega.                        |
-|              | Q1.3 (Produtividade) | M03            | Relação agilidade vs. qualidade lógica.                             |
-| O2. Corretude | Q2.1 (Happy Path)  | M04            | Se a interação básica funciona (clique e resposta).                 |
-|              | Q2.2 (Estados)     | M05            | Se todos os estados visuais foram tratados no código.               |
-| O3. Bugs     | Q3.1 (Omissão)     | M06, M08       | Regras de UI esquecidas (ex: não desabilitar botão).                |
-|              | Q3.2 (Lógica UI)   | M07, M08       | Erros de fluxo (ex: mostrar msg errada).                            |
-| O4. Retrabalho | Q4.1 (Reprovação)   | M09, M10       | Índice de código que precisaria ser refeito.                        |
+| Objetivo      | Questão | Métricas (IDs) | O que se espera medir                                                                                |
+|---------------|---------|----------------|-------------------------------------------------------------------------------------------------------|
+| O1. Eficiência| Q1.1    | M01, M02       | Tempo total e variação para implementar a lógica a partir do requisito.                              |
+|               | Q1.2    | M01a           | Tempo até iniciar a codificação e efeito do formato na largada.                           |
+|               | Q1.3    | M03            | Produtividade: regras corretas por minuto.                                                           |
+| O2. Corretude | Q2.1    | M04            | Sucesso no fluxo principal (“caminho feliz”).                                                        |
+|               | Q2.2    | M05            | Cobertura das transições/estados descritos no requisito.                                            |
+|               | Q2.3    | M05, M06, M07  | Implementação correta de estados de exceção; omissões e erros de lógica.                             |
+| O3. Bugs      | Q3.1    | M06, M08       | Omissões de regras de UI e sua densidade relativa.                                                   |
+|               | Q3.2    | M07, M08       | Erros de lógica de fluxo e sua densidade relativa.                                                   |
+|               | Q3.3    | M11            | Falhas em validações de entrada em casos de borda.                                                   |
+| O4. Retrabalho| Q4.1    | M09, M10       | Taxa de reprovação em code review e esforço associado para correção.                                 |
+|               | Q4.2    | M10            | Esforço de retrabalho estimado (tempo) para corrigir os bugs gerados.                                |
+|               | Q4.3    | M12            | Severidade predominante dos defeitos por formato.                                                    |
 
 
-| ID   | Nome da Métrica                   | Descrição da Métrica                                                                                                   | Unidade             |
-|------|-----------------------------------|------------------------------------------------------------------------------------------------------------------------|---------------------|
-| M01  | Tempo de Implementação           | Tempo total gasto pelo desenvolvedor para ler o requisito e escrever a lógica do componente.                          | Minutos/Segundos    |
-| M02  | Desvio Padrão do Tempo           | Variação do tempo dentro do mesmo grupo.                                                                              | Minutos             |
-| M03  | Code Velocity (UI)               | Razão entre regras de interface atendidas corretamente e o tempo gasto.                                               | Regras/Minuto       |
-| M04  | Acurácia do Caminho Feliz        | Se o código atende ao fluxo principal de interação corretamente.                                                      | Binária (0 ou 1)    |
-| M05  | Cobertura de Estados (State Coverage) | Percentual de estados de interface (Loading, Error, Success, Disabled) descritos que foram tratados no código.   | Porcentagem (%)     |
-| M06  | Bugs de Omissão (Missing UI Logic) | Contagem de comportamentos de interface exigidos (ex: resetar form) que não foram escritos.                        | Contagem Absoluta   |
-| M07  | Bugs de Lógica de Fluxo          | Contagem de erros em condicionais de validação ou transições de estado incorretas.                                   | Contagem Absoluta   |
-| M08  | Densidade de Defeitos            | Total de bugs encontrados (M06 + M07) dividido pela complexidade da solução.                                          | Bugs / Solução      |
-| M09  | Taxa de Rejeição (Simulada)      | Classificação do código como "Aprovado" ou "Requer Ajustes" funcionalmente.                                           | Binária (Pass/Fail) |
-| M10  | Esforço de Retrabalho Estimado   | Estimativa de tempo para corrigir os bugs de interface encontrados.                                                   | Minutos (Estimado)  |
+
+| ID   | Nome da Métrica                | Descrição da Métrica                                                                                                              | Unidade             |
+|------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
+| M01  | Tempo de Implementação         | Tempo total gasto pelo desenvolvedor para ler o requisito e escrever a lógica do componente.                                     | Minutos/Segundos    |
+| M01a | Tempo de Start-up              | Tempo desde a abertura do requisito até a primeira linha de código.                                                              | Minutos/Segundos    |
+| M02  | Desvio Padrão do Tempo         | Variação do tempo dentro do mesmo grupo.                                                                                         | Minutos             |
+| M03  | Code Velocity (UI)             | Razão entre o número de regras de interface atendidas corretamente e o tempo gasto (M01).                                        | Regras/Minuto       |
+| M04  | Acurácia do Caminho Feliz      | Indicador binário de que o fluxo principal de interação funciona corretamente.                                                   | Binária (0 ou 1)    |
+| M05  | Cobertura de Estados           | Percentual de estados de interface descritos que foram tratados no código.                                                       | Porcentagem (%)     |
+| M06  | Bugs de Omissão                | Contagem de comportamentos de interface exigidos que não foram implementados.                                                    | Contagem Absoluta   |
+| M07  | Bugs de Lógica de Fluxo        | Contagem de erros em condicionais de validação ou transições de estado incorretas.                                               | Contagem Absoluta   |
+| M08  | Densidade de Defeitos          | (M06 + M07) dividido pelo número de regras/transições previstas no checklist de referência.                                      | Bugs/Regra Prevista |
+| M09  | Taxa de Rejeição (Simulada)    | Classificação do código como "Aprovado" ou "Requer Ajustes" funcionalmente.                                                      | Binária (Pass/Fail) |
+| M10  | Esforço de Retrabalho Estimado | Estimativa de tempo para corrigir os bugs encontrados.                                                                           | Minutos (Estimado)  |
+| M11  | Falhas em Casos de Borda       | Contagem de falhas especificamente em validações de entrada e casos de borda. M11 é um recorte temático de M06/M07.             | Contagem Absoluta   |
+| M12  | Classificação de Severidade    | Categorização do impacto do bug em níveis (Baixo, Médio, Alto, Bloqueante) pode ser tratada como escala ordinal na análise.| Categórica (Ordinal) |
+
 
 
 ## 4. Escopo e contexto do experimento
@@ -229,7 +244,7 @@ Fatores que podem ameaçar a validade externa:
 - Se a **linguagem natural** reduzir omissões por manter melhor contexto, recomenda-se seu uso como fonte primária de compreensão do desenvolvedor, deixando o Gherkin como apoio à automação de testes.
 
 **Impacto na qualidade do produto (Front-end):**
-- **Menos bugs de interface crítica:** menor incidência de falhas de usabilidade (ex.: botão habilitado fora de hora, loading infinito).
+- **Menos bugs de interface crítica:** menor incidência de falhas de usabilidade.
 - **Menos retrabalho:** redução de rejeições em code review e de retornos de QA para desenvolvimento.
   
 
@@ -255,7 +270,7 @@ Fatores que podem ameaçar a validade externa:
 ### 6.2 Critérios de sucesso globais (go / no-go)
 
 - **Tamanho da amostra (mínimo):**  
-  - **GO:** obter ≥ 60 respostas válidas.  
+  - **GO:** obter ≥ 80 respostas válidas.  
   - **NO-GO:** obter menos de 60 respostas válidas.  
 
 - **Qualidade dos dados:**  
@@ -280,67 +295,188 @@ Fatores que podem ameaçar a validade externa:
 
 ### 7.1 Modelo conceitual do experimento
 
-Explique, em texto ou esquema, como você acredita que os fatores influenciam as respostas (por exemplo, “técnica A reduz defeitos em relação a B”).
+O formato dos critérios de aceite (Gherkin vs. Linguagem Natural) altera como o desenvolvedor lê, extrai e organiza regras de interface. Essa mudança afeta a carga cognitiva, a manutenção do contexto do ciclo de vida do componente e a chance de ambiguidade ou omissão, influenciando diretamente tempo, corretude de estados, bugs e retrabalho
 
 ### 7.2 Hipóteses formais (H0, H1)
 
-Formule explicitamente as hipóteses nulas e alternativas para cada questão principal, incluindo a direção esperada do efeito quando fizer sentido.
+| Objetivo                  | Questão                                | Métrica(s)           | Hipótese Nula (H0)                                                                                            | Hipótese Alternativa (H1)                                                                      | Cauda     |
+| ------------------------- | -------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------- |
+| O1 – Eficiência           | Q1.1 – Tempo total                     | M01                  | Não há diferença no tempo total médio de implementação entre LN (A) e GH (B).                                 | O tempo total médio de implementação é menor em GH (B) do que em LN (A).                       | Unicaudal |
+| O1 – Eficiência           | Q1.2 – Start-up                        | M01a                 | Não há diferença no tempo médio até a primeira linha de código entre LN (A) e GH (B).                         | O tempo médio até a primeira linha de código é menor em GH (B) do que em LN (A).               | Unicaudal |
+| O1 – Eficiência           | Q1.3 – Produtividade                   | M03                  | Não há diferença na produtividade média (regras corretas por minuto) entre LN (A) e GH (B).                   | A produtividade média difere entre LN (A) e GH (B).                                            | Bicaudal  |
+| O2 – Corretude de Estados | Q2.1 – Caminho feliz                   | M04                  | A taxa de sucesso do “caminho feliz” é igual entre LN (A) e GH (B).                                           | A taxa de sucesso do “caminho feliz” é maior em GH (B) do que em LN (A).                       | Unicaudal |
+| O2 – Corretude de Estados | Q2.2 – Cobertura de estados/transições | M05                  | A cobertura média de estados e transições é igual entre LN (A) e GH (B).                                      | A cobertura média de estados e transições é maior em LN (A) do que em GH (B).                  | Unicaudal |
+| O2 – Corretude de Estados | Q2.3 – Estados de exceção              | M05, M06, M07        | Não há diferença entre LN (A) e GH (B) na implementação de estados de exceção (cobertura, omissões e lógica). | LN (A) apresenta maior cobertura de estados de exceção e menor taxa de omissões do que GH (B). | Unicaudal |
+| O3 – Bugs e Exceções      | Q3.1 – Bugs de omissão                 | M06 (impacto em M08) | A média de bugs de omissão é igual entre LN (A) e GH (B).                                                     | A média de bugs de omissão é maior em GH (B) do que em LN (A).                                 | Unicaudal |
+| O3 – Bugs e Exceções      | Q3.2 – Bugs de lógica de fluxo         | M07 (impacto em M08) | A média de bugs de lógica de fluxo é igual entre LN (A) e GH (B).                                             | A média de bugs de lógica de fluxo é menor em GH (B) do que em LN (A).                         | Unicaudal |
+| O3 – Bugs e Exceções      | Q3.3 – Edge cases de input             | M11                  | A taxa média de falhas em casos de borda de entrada é igual entre LN (A) e GH (B).                            | A taxa média de falhas em casos de borda de entrada difere entre LN (A) e GH (B).              | Bicaudal  |
+| O4 – Retrabalho           | Q4.1 – Taxa de rejeição simulada       | M09                  | A taxa de rejeição simulada em code review é igual entre LN (A) e GH (B).                                     | A taxa de rejeição simulada (“Requer Ajustes”) é maior em GH (B) do que em LN (A).             | Unicaudal |
+| O4 – Retrabalho           | Q4.2 – Esforço de retrabalho           | M10                  | O esforço médio de retrabalho (tempo) é igual entre LN (A) e GH (B).                                          | O esforço médio de retrabalho (tempo) é menor em LN (A) do que em GH (B).                      | Unicaudal |
+| O4 – Retrabalho           | Q4.3 – Severidade dos defeitos         | M12                  | A distribuição de severidade dos defeitos é igual entre LN (A) e GH (B).                                      | A proporção de defeitos de severidade Maior/Bloqueante é menor em LN (A) do que em GH (B).     | Unicaudal |
 
 ### 7.3 Nível de significância e considerações de poder
 
-Defina o nível de significância (por exemplo, α = 0,05) e comente o que se espera em termos de poder estatístico, relacionando-o ao tamanho de amostra planejado.
+Será adotado nível de significância α = 0,05, aceitando até 5% de chance de erro Tipo I
+
+Poder estatístico:
+
+**Meta ideal:** ~100 respostas válidas (≈ 50 por grupo) → poder esperado próximo de 80% para detectar efeitos moderados.
+
+**Mínimo aceitável (GO):** ≥ 80 respostas válidas (≈ 40 por grupo) → poder ainda razoável, mas um pouco menor.
+
+**Abaixo de 60 respostas (NO-GO):** poder muito baixo, com alto risco de erro Tipo II, exigindo replanejamento ou nova coleta.
 
 ---
 
 ## 8. Variáveis, fatores, tratamentos e objetos de estudo
 
+## 8. Variáveis, fatores, tratamentos e objetos de estudo
+
 ### 8.1 Objetos de estudo
 
-Descreva o que será efetivamente manipulado ou analisado (módulos de código, requisitos, tarefas, casos de teste, issues, etc.).
+Os principais objetos de estudo deste experimento são:
 
-### 8.2 Sujeitos / participantes (visão geral)
+- **Critérios de aceite de um componente rico de interface**, preparados em dois formatos:
+  - **Linguagem Natural (LN):** texto corrido, narrativo, descrevendo o comportamento esperado da tela.
+  - **Notação Gherkin (GH):** mesmos critérios de aceite reescritos em cenários estruturados (Dado/Quando/Então).
 
-Caracterize em alto nível quem serão os participantes (desenvolvedores, testadores, estudantes, etc.), sem ainda entrar em detalhes de seleção.
+- **Submissões de solução dos participantes**, compostas por:
+  - **Pseudocódigo ou trechos de script** (JavaScript/TypeScript ou similar) representando a lógica de controle de interface.
+  - **Respostas a perguntas complementares**, quando houver (por exemplo, percepção de dificuldade ou familiaridade com o formato).
 
-### 8.3 Variáveis independentes (fatores) e seus níveis
-
-Liste os fatores que serão manipulados (por exemplo, técnica, ferramenta, processo) e indique os níveis de cada um (A/B, X/Y, alto/baixo).
-
-### 8.4 Tratamentos (condições experimentais)
-
-Descreva claramente cada condição de experimento (grupo controle, tratamento 1, tratamento 2, etc.) e o que distingue uma da outra.
-
-### 8.5 Variáveis dependentes (respostas)
-
-Informe as medidas de resultado que você observará (por exemplo, número de defeitos, esforço em horas, tempo de conclusão, satisfação).
-
-### 8.6 Variáveis de controle / bloqueio
-
-Liste fatores que você não está estudando diretamente, mas que serão mantidos constantes ou usados para formar blocos (por exemplo, experiência, tipo de tarefa).
-
-### 8.7 Possíveis variáveis de confusão conhecidas
-
-Identifique fatores que podem distorcer os resultados (como diferenças de contexto, motivação ou carga de trabalho) e que você pretende monitorar.
+É sobre esses artefatos (requisito em formatos distintos + código/pseudocódigo produzido) que serão calculadas as métricas **M01–M12**.
 
 ---
 
+### 8.2 Sujeitos / participantes (visão geral)
+
+Os participantes serão:
+
+- **Desenvolvedores Web** com conhecimento em **Front-end** ou **Fullstack**; e
+- **Profissionais/estudantes de QA** com experiência em criticar/compreender critérios de aceite.
+
+Em termos de perfil:
+
+- Podem ser **estudantes de graduação** em Computação/Engenharia de Software ou **profissionais em início/meio de carreira**.
+- Espera-se que tenham **familiaridade básica com desenvolvimento Web** (eventos, estados, validação no cliente).
+- O **nível de experiência** (júnior, pleno, sênior) será coletado, mas **não faz parte do fator principal** do estudo.
+
+---
+
+### 8.3 Variáveis independentes (fatores) e seus níveis
+
+O experimento possui um fator principal manipulado:
+
+- **Fator F1 – Formato dos critérios de aceite (Requisito de Interface)**
+  - **Nível A – Linguagem Natural (LN)**
+  - **Nível B – Gherkin (GH)**
+
+---
+
+### 8.4 Tratamentos (condições experimentais)
+
+O experimento adota um desenho entre-sujeitos, onde cada participante vê apenas um formato de requisito:
+
+- **Tratamento T1 – Grupo A: Linguagem Natural (LN)**
+  - O participante recebe a descrição da funcionalidade em **texto corrido**.
+  - Deve ler o enunciado e escrever a lógica de controle da interface.
+  - Todas as métricas M01–M12 são calculadas com base na solução produzida a partir desse formato.
+
+- **Tratamento T2 – Grupo B: Gherkin (GH)**
+  - O participante recebe o mesmo conjunto de regras, reescrito em cenários Gherkin (Dado/Quando/Então).
+  - Deve ler os cenários e escrever a lógica de controle da interface.
+  - As mesmas métricas M01–M12 são calculadas, permitindo comparação direta com o Grupo A.
+
+A tarefa funcional  é equivalente entre os grupos. A única diferença experimental é o formato de apresentação do requisito.
+
+---
+
+### 8.5 Variáveis dependentes (respostas)
+
+As variáveis dependentes são as **métricas de resultado já definidas na Seção 3.4**, derivadas das soluções submetidas:
+
+**Tempo / eficiência**
+- **M01** – Tempo total de implementação.  
+- **M01a** – Tempo até a primeira linha de código.  
+- **M02** – Desvio padrão do tempo.  
+- **M03** – Code Velocity.  
+
+**Corretude / cobertura de estados**
+- **M04** – Acurácia do caminho feliz.  
+- **M05** – Cobertura de estados/transições.  
+
+**Bugs e defeitos de lógica**
+- **M06** – Bugs de omissão .  
+- **M07** – Bugs de lógica de fluxo.  
+- **M08** – Densidade de defeitos.  
+- **M11** – Falhas em casos de borda.  
+
+**Retrabalho / impacto**
+- **M09** – Taxa de rejeição simulada em code review.  
+- **M10** – Esforço de retrabalho estimado.  
+- **M12** – Classificação de severidade dos defeitos.  
+
+---
+
+### 8.6 Variáveis de controle / bloqueio
+
+- **Tipo de tarefa / componente:**
+  - Todos os participantes implementam o mesmo cenário de interface, ou seja, mesmos estados, mesmas regras, mesmo nível de complexidade.
+
+- **Ambiente de resposta:**
+  - Uso do mesmo formulário eletrônico, com instruções idênticas, campos iguais para todos e limite de tempo semelhante.
+
+- **Idioma e contexto do enunciado:**
+  - Requisitos fornecidos em português, com vocabulário compatível com o público-alvo.
+
+---
+
+### 8.7 Possíveis variáveis de confusão conhecidas
+
+Alguns fatores podem influenciar os resultados sem fazer parte do fator principal:
+
+- **Motivação e engajamento do participante:**
+  - Pessoas mais motivadas tendem a ler com mais atenção e codar com mais cuidado, reduzindo bugs independentemente do formato do requisito.
+
+- **Fadiga e contexto de execução:**
+  - Participantes fazendo o experimento após um dia cheio de trabalho/aula podem estar mais cansados, afetando tempo e qualidade de implementação.
+
+- **Uso de ferramentas externas:**
+  - Se o participante recorrer a modelos de IA ou copiar código pronto, isso distorce as medidas de esforço cognitivo e de omissão.
+  - Será necessário inibir explicitamente sobre o uso de tais ferramentas.
+
+- **Multitarefa e interrupções:**
+  - O participante pode alternar entre janelas ou ser interrompido durante a tarefa, inflando artificialmente o tempo medido.
+
+- **Variedade de dispositivos e ambiente físico:**
+  - Diferenças entre usar notebook, monitor grande ou celular, bem como ambiente barulhento vs silencioso, podem impactar a fluidez de leitura e codificação.
+    
+---
 ## 9. Desenho experimental
 
 ### 9.1 Tipo de desenho (completamente randomizado, blocos, fatorial, etc.)
 
-Indique qual tipo de desenho será utilizado e justifique brevemente por que ele é adequado ao problema e às restrições.
+O estudo adotará um desenho experimental completamente randomizado entre sujeitos, em que cada participante é exposto a apenas um dos formatos de requisito (Linguagem Natural ou Gherkin), compondo dois grupos independentes: Grupo A (LN) e Grupo B (GH). A comparação entre os grupos será feita a partir das métricas M01–M12, tratadas como respostas às diferentes condições experimentais.
+
+Esse tipo de desenho é adequado ao problema porque evita efeitos de aprendizagem, o participante não resolve a mesma tarefa duas vezes em formatos distintos e reduz o risco de contaminação, ou seja, de o entendimento construído em um formato influenciar a leitura do outro. Além disso, ele se encaixa bem nas restrições práticas do estudo, especialmente o fato de a coleta ser online, com participantes entrando em momentos distintos e realizando a tarefa em uma única sessão.
 
 ### 9.2 Randomização e alocação
 
-Explique o que será randomizado (sujeitos, tarefas, ordem de tratamentos) e como a randomização será feita na prática (ferramentas, procedimentos).
+A randomização será aplicada aos sujeitos, definindo em qual formato de requisito cada participante irá trabalhar. Cada pessoa receberá um identificador e, a partir desse identificador, um pequeno script de “sorteio” fará a alocação para um dos dois grupos: Grupo A (Linguagem Natural) ou Grupo B (Gherkin). Essa alocação será registrada em uma planilha ou base simples, associando o ID do participante ao grupo e ao link do formulário correspondente.
 
 ### 9.3 Balanceamento e contrabalanço
 
-Descreva como você garantirá que os grupos fiquem comparáveis (balanceamento) e como lidará com efeitos de ordem ou aprendizagem (contrabalanço).
+O balanceamento entre os grupos será feito acompanhando o número de respostas em LN e GH e ajustando a randomização, se necessário, para que os tamanhos fiquem semelhantes. Também serão coletados dados de perfil (experiência em desenvolvimento Web e familiaridade com Gherkin/BDD) para verificar se houve desequilíbrio de senioridade. E caso isso ocorra, podem ser feitas análises estratificadas ou ajustes estatísticos usando essas variáveis.
+
+Em relação ao contrabalanço, ele não é necessário neste estudo, pois o desenho é entre sujeitos e cada participante realiza apenas uma tarefa em um único formato. Não há efeito de ordem entre tratamentos.
 
 ### 9.4 Número de grupos e sessões
 
-Informe quantos grupos existirão e quantas sessões ou rodadas cada sujeito ou grupo irá executar, com uma breve justificativa.
+- **Número de grupos:** 2 grupos independentes  
+  - **Grupo A:** Linguagem Natural (LN)  
+  - **Grupo B:** Gherkin (GH)
+
+Cada participante participa de apenas uma sessão e resolve uma tarefa principal, sempre em um único formato de requisito, de acordo com o grupo em que foi alocado. Esse arranjo reduz o esforço individual, diminui o risco de fadiga e evita efeitos de aprendizagem cruzada, já que o participante não repete a mesma tarefa em outro formato.
 
 ---
 
