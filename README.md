@@ -239,46 +239,314 @@ Fatores que podem ameaçar a validade externa:
 
 ### 6.1 Riscos de alto nível (negócio, técnicos, etc.)
 
-- **Baixa adesão (amostragem insuficiente):** risco de não obter o número mínimo de participantes voluntários para gerar relevância estatística/qualitativa.  
-  **Mitigação:** divulgação em múltiplas comunidades/redes sociais.   
-  **Meta desejável:** buscar 30–40 respostas válidas para aumentar poder estatístico, mantendo 20 como mínimo go/no-go.
+- **Baixa adesão (amostragem insuficiente):** risco de não atingir as 100 respostas válidas necessárias para conseguir realizar o cálculo estatístico planejado.  
 
-- **Heterogeneidade técnica:** risco de discrepância forte de experiência (ex.: sênior vs. iniciante) distorcer tempo e qualidade.  
-  **Mitigação:** coletar senioridade e familiaridade prévia com Gherkin/BDD e frameworks de front-end no formulário para permitir normalização dos dados, análise segregada por perfil e uso como covariáveis.
+- **Heterogeneidade técnica:** risco de discrepância forte de senioridade distorcer tempo e qualidade.  
 
-- **Fadiga ou abandono (drop-out):** risco de o cenário ser longo/complexo, aumentando desistência.  
-  **Mitigação:** teste piloto para calibrar tamanho/clareza do enunciado e garantir duração média ≤ 20 minutos.
-
-- **Contaminação por IA generativa:** risco de uso de ChatGPT/Copilot para gerar solução, invalidando a medida de esforço cognitivo humano.  
-  **Mitigação:** 
-  1. aviso explícito solicitando não usar IA;  
-  2. **checkbox de declaração de não uso** antes de iniciar;  
-  3. campo final pedindo breve justificativa textual (1–3 frases) sobre a lógica implementada, auxiliando detecção de inconsistências típicas de geração automática;  
+- **Fadiga ou abandono (drop-out):** risco de o cenário ser longo/complexo, aumentando desistência.
+- 
+- **Contaminação por IA generativa:** risco de uso de modelos de inteligência artificial para gerar solução, invalidando a medida de esforço cognitivo humano.  
 
 - **Viés de Design:** risco de erro ocorrer por preferência pessoal do participante, e não por leitura do requisito.  
-  **Mitigação:** instrução clara: “considere o requisito como verdade do produto; siga estritamente o que está escrito, mesmo que discorde do comportamento”, com exemplo curto no enunciado reforçando que o objetivo é obedecer às regras, não redesenhar UX.
+
 
 ---
 
 ### 6.2 Critérios de sucesso globais (go / no-go)
 
-- **Tamanho da amostra (mínimo):** obter ≥ 20 respostas válidas (10 por grupo) completas.  
-  **Meta ideal:** ≥ 30 respostas válidas.
+- **Tamanho da amostra (mínimo):**  
+  - **GO:** obter ≥ 60 respostas válidas.  
+  - **NO-GO:** obter menos de 60 respostas válidas.  
 
-- **Qualidade dos dados:** pelo menos 80% das submissões devem conter código ou pseudocódigo inteligível, permitindo avaliar lógica de eventos/estados; respostas em branco ou incoerentes serão descartadas.
+- **Qualidade dos dados:**  
+  - **GO:** pelo menos 80% das submissões contêm código inteligível.  
+  - **NO-GO:** menos de 70% das submissões contêm código inteligível.  
 
-- **Balanceamento dos grupos:** distribuição equilibrada entre Grupo A (Linguagem Natural) e Grupo B (Gherkin), evitando viés demográfico/técnico (ex.: concentração de participantes muito experientes em um grupo).  
-  **Operacionalização:** checagem periódica da composição por senioridade e familiaridade com BDD durante a coleta.
-
-- **Conclusividade:** os dados devem permitir responder às RQs (RQ1 a RQ3), seja evidenciando diferença entre formatos ou ausência de diferença estatística (resultado válido).
+- **Balanceamento dos grupos:**  
+  - **GO:** distribuição equilibrada entre Grupo A (Linguagem Natural) e Grupo B (Gherkin) em termos de senioridade e familiaridade com Gherkin.  
+  - **NO-GO:** desequilíbrio relevante entre os grupos em senioridade ou familiaridade com Gherkin, indicando viés técnico.  
 
 ---
 
 ### 6.3 Critérios de parada antecipada (pré-execução)
 
-- **Falha no teste piloto:** se participantes do piloto reportarem cenário incompreensível ou levarem > 40 minutos, o objeto de estudo (requisitos) deve ser reescrito/simplificado.
+- **Falha no teste piloto:** se participantes do piloto reportarem cenário incompreensível ou levarem > 40 minutos, os requisitos devem ser reescritos.
 
-- **Inviabilidade técnica da ferramenta:** se o formulário não suportar bem blocos de código (ex.: quebra de identação/formatação), inviabilizando leitura/análise posterior.
+- **Inviabilidade técnica da ferramenta:** se o formulário não suportar bem blocos de código, inviabilizando análise posterior.
 
-- **Desvio crítico de interpretação:** se 100% dos primeiros 5 participantes errarem o “caminho feliz”, indica má formulação do enunciado; o requisito deve ser revisado imediatamente antes de continuar a divulgação.
+- **Desvio crítico de interpretação:** se os primeiros 5 participantes errarem o “caminho feliz”, indica má formulação do enunciado e o requisito deve ser revisado antes de continuar a divulgação.
+
+## 7. Modelo conceitual e hipóteses
+
+### 7.1 Modelo conceitual do experimento
+
+Explique, em texto ou esquema, como você acredita que os fatores influenciam as respostas (por exemplo, “técnica A reduz defeitos em relação a B”).
+
+### 7.2 Hipóteses formais (H0, H1)
+
+Formule explicitamente as hipóteses nulas e alternativas para cada questão principal, incluindo a direção esperada do efeito quando fizer sentido.
+
+### 7.3 Nível de significância e considerações de poder
+
+Defina o nível de significância (por exemplo, α = 0,05) e comente o que se espera em termos de poder estatístico, relacionando-o ao tamanho de amostra planejado.
+
+---
+
+## 8. Variáveis, fatores, tratamentos e objetos de estudo
+
+### 8.1 Objetos de estudo
+
+Descreva o que será efetivamente manipulado ou analisado (módulos de código, requisitos, tarefas, casos de teste, issues, etc.).
+
+### 8.2 Sujeitos / participantes (visão geral)
+
+Caracterize em alto nível quem serão os participantes (desenvolvedores, testadores, estudantes, etc.), sem ainda entrar em detalhes de seleção.
+
+### 8.3 Variáveis independentes (fatores) e seus níveis
+
+Liste os fatores que serão manipulados (por exemplo, técnica, ferramenta, processo) e indique os níveis de cada um (A/B, X/Y, alto/baixo).
+
+### 8.4 Tratamentos (condições experimentais)
+
+Descreva claramente cada condição de experimento (grupo controle, tratamento 1, tratamento 2, etc.) e o que distingue uma da outra.
+
+### 8.5 Variáveis dependentes (respostas)
+
+Informe as medidas de resultado que você observará (por exemplo, número de defeitos, esforço em horas, tempo de conclusão, satisfação).
+
+### 8.6 Variáveis de controle / bloqueio
+
+Liste fatores que você não está estudando diretamente, mas que serão mantidos constantes ou usados para formar blocos (por exemplo, experiência, tipo de tarefa).
+
+### 8.7 Possíveis variáveis de confusão conhecidas
+
+Identifique fatores que podem distorcer os resultados (como diferenças de contexto, motivação ou carga de trabalho) e que você pretende monitorar.
+
+---
+
+## 9. Desenho experimental
+
+### 9.1 Tipo de desenho (completamente randomizado, blocos, fatorial, etc.)
+
+Indique qual tipo de desenho será utilizado e justifique brevemente por que ele é adequado ao problema e às restrições.
+
+### 9.2 Randomização e alocação
+
+Explique o que será randomizado (sujeitos, tarefas, ordem de tratamentos) e como a randomização será feita na prática (ferramentas, procedimentos).
+
+### 9.3 Balanceamento e contrabalanço
+
+Descreva como você garantirá que os grupos fiquem comparáveis (balanceamento) e como lidará com efeitos de ordem ou aprendizagem (contrabalanço).
+
+### 9.4 Número de grupos e sessões
+
+Informe quantos grupos existirão e quantas sessões ou rodadas cada sujeito ou grupo irá executar, com uma breve justificativa.
+
+---
+
+## 10. População, sujeitos e amostragem
+
+### 10.1 População-alvo
+
+Descreva qual é a população real que você deseja representar com o experimento (por exemplo, “desenvolvedores Java de times de produto web”).
+
+### 10.2 Critérios de inclusão de sujeitos
+
+Especifique os requisitos mínimos para um participante ser elegível (experiência, conhecimento, papel, disponibilidade, etc.).
+
+### 10.3 Critérios de exclusão de sujeitos
+
+Liste condições que impedem participação (conflitos de interesse, falta de skills essenciais, restrições legais ou éticas).
+
+### 10.4 Tamanho da amostra planejado (por grupo)
+
+Defina quantos participantes você pretende ter no total e em cada grupo, relacionando a decisão com poder, recursos e contexto.
+
+### 10.5 Método de seleção / recrutamento
+
+Explique como os participantes serão escolhidos (amostra de conveniência, sorteio, convite aberto, turma de disciplina, time específico).
+
+### 10.6 Treinamento e preparação dos sujeitos
+
+Descreva qual treinamento ou material preparatório será fornecido para nivelar entendimento e reduzir vieses por falta de conhecimento.
+
+---
+
+## 11. Instrumentação e protocolo operacional
+
+### 11.1 Instrumentos de coleta (questionários, logs, planilhas, etc.)
+
+Liste todos os instrumentos que serão usados para coletar dados (arquivos, formulários, scripts, ferramentas), com uma breve descrição do papel de cada um.
+
+### 11.2 Materiais de suporte (instruções, guias)
+
+Descreva as instruções escritas, guias rápidos, slides ou outros materiais que serão fornecidos a participantes e administradores do experimento.
+
+### 11.3 Procedimento experimental (protocolo – visão passo a passo)
+
+Escreva, em ordem, o que acontecerá na operação (do convite ao encerramento), de modo que alguém consiga executar o experimento seguindo esse roteiro.
+
+### 11.4 Plano de piloto (se haverá piloto, escopo e critérios de ajuste)
+
+Indique se um piloto será realizado, com que participantes e objetivos, e defina que tipo de ajuste do protocolo poderá ser feito com base nesse piloto.
+
+---
+
+## 12. Plano de análise de dados (pré-execução)
+
+### 12.1 Estratégia geral de análise (como responderá às questões)
+
+Explique, em alto nível, como os dados coletados serão usados para responder cada questão de pesquisa ou de negócio.
+
+### 12.2 Métodos estatísticos planejados
+
+Liste os principais testes ou técnicas estatísticas que pretende usar (por exemplo, t-teste, ANOVA, testes não paramétricos, regressão).
+
+### 12.3 Tratamento de dados faltantes e outliers
+
+Defina previamente as regras para lidar com dados ausentes e valores extremos, evitando decisões oportunistas após ver os resultados.
+
+### 12.4 Plano de análise para dados qualitativos (se houver)
+
+Descreva como você tratará dados qualitativos (entrevistas, comentários, observações), especificando a técnica de análise (codificação, categorias, etc.).
+
+---
+
+## 13. Avaliação de validade (ameaças e mitigação)
+
+### 13.1 Validade de conclusão
+
+Liste ameaças que podem comprometer a robustez das conclusões estatísticas (baixo poder, violação de suposições, erros de medida) e como pretende mitigá-las.
+
+### 13.2 Validade interna
+
+Identifique ameaças relacionadas a causas alternativas para os efeitos observados (history, maturation, selection, etc.) e explique suas estratégias de controle.
+
+### 13.3 Validade de constructo
+
+Refleta se as medidas escolhidas realmente representam os conceitos de interesse e descreva como você reduzirá ambiguidades de interpretação.
+
+### 13.4 Validade externa
+
+Discuta em que contextos os resultados podem ser generalizados e quais diferenças de cenário podem limitar essa generalização.
+
+### 13.5 Resumo das principais ameaças e estratégias de mitigação
+
+Faça uma síntese das ameaças mais críticas e das ações planejadas, de preferência em forma de lista ou tabela simples.
+
+---
+
+## 14. Ética, privacidade e conformidade
+
+### 14.1 Questões éticas (uso de sujeitos, incentivos, etc.)
+
+Descreva potenciais questões éticas (pressão para participar, uso de estudantes, incentivos, riscos de exposição) e como serão tratadas.
+
+### 14.2 Consentimento informado
+
+Explique como os participantes serão informados sobre objetivos, riscos, benefícios e como registrarão seu consentimento.
+
+### 14.3 Privacidade e proteção de dados
+
+Indique que dados pessoais serão coletados, como serão protegidos (anonimização, pseudoanonimização, controle de acesso) e por quanto tempo serão mantidos.
+
+### 14.4 Aprovações necessárias (comitê de ética, jurídico, DPO, etc.)
+
+Liste órgãos ou pessoas que precisam aprovar o experimento (comitê de ética, jurídico, DPO, gestores) e o status atual dessas aprovações.
+
+---
+
+## 15. Recursos, infraestrutura e orçamento
+
+### 15.1 Recursos humanos e papéis
+
+Identifique os membros da equipe do experimento e descreva brevemente o papel e responsabilidade de cada um.
+
+### 15.2 Infraestrutura técnica necessária
+
+Liste ambientes, servidores, ferramentas, repositórios e integrações que devem estar disponíveis para executar o experimento.
+
+### 15.3 Materiais e insumos
+
+Relacione materiais físicos ou digitais necessários (máquinas, licenças, formulários, dispositivos) que precisam estar prontos antes da operação.
+
+### 15.4 Orçamento e custos estimados
+
+Faça uma estimativa dos principais custos envolvidos (horas de pessoas, serviços, licenças, infraestrutura) e a fonte de financiamento.
+
+---
+
+## 16. Cronograma, marcos e riscos operacionais
+
+### 16.1 Macrocronograma (até o início da execução)
+
+Defina as principais datas e marcos (conclusão do plano, piloto, revisão, início da operação) com uma visão de tempo realista.
+
+### 16.2 Dependências entre atividades
+
+Indique quais atividades dependem de outras para começar (por exemplo, treinamento após aprovação ética), deixando essas dependências claras.
+
+### 16.3 Riscos operacionais e plano de contingência
+
+Liste riscos ligados a cronograma, disponibilidade de pessoas ou recursos, e descreva ações de contingência caso esses riscos se materializem.
+
+---
+
+## 17. Governança do experimento
+
+### 17.1 Papéis e responsabilidades formais
+
+Defina quem decide, quem executa, quem revisa e quem apenas deve ser informado, deixando claro o fluxo de responsabilidade.
+
+### 17.2 Ritos de acompanhamento pré-execução
+
+Descreva as reuniões, checkpoints e revisões previstos antes da execução, incluindo frequência e participantes.
+
+### 17.3 Processo de controle de mudanças no plano
+
+Explique como mudanças no desenho ou no escopo do experimento serão propostas, analisadas, aprovadas e registradas.
+
+---
+
+## 18. Plano de documentação e reprodutibilidade
+
+### 18.1 Repositórios e convenções de nomeação
+
+Indique onde o plano, instrumentos, scripts e dados (futuros) serão armazenados e quais convenções de nomes serão usadas.
+
+### 18.2 Templates e artefatos padrão
+
+Liste os modelos (questionários, formulários, checklists, scripts) que serão usados e onde podem ser encontrados.
+
+### 18.3 Plano de empacotamento para replicação futura
+
+Descreva o que será organizado desde já (documentos, scripts, instruções) para facilitar a replicação do experimento por outras equipes ou no futuro.
+
+---
+
+## 19. Plano de comunicação
+
+### 19.1 Públicos e mensagens-chave pré-execução
+
+Liste os grupos que precisam ser comunicados e quais mensagens principais devem receber (objetivos, escopo, datas, impactos esperados).
+
+### 19.2 Canais e frequência de comunicação
+
+Defina por quais canais (e-mail, reuniões, Slack/Teams, etc.) e com que frequência as comunicações serão feitas.
+
+### 19.3 Pontos de comunicação obrigatórios
+
+Especifique os eventos que exigem comunicação formal (aprovação do plano, mudanças relevantes, adiamentos, cancelamentos).
+
+---
+
+## 20. Critérios de prontidão para execução (Definition of Ready)
+
+### 20.1 Checklist de prontidão (itens que devem estar completos)
+
+Liste os itens que precisam estar finalizados e aprovados (plano, instrumentos, aprovação ética, recursos, comunicação) para autorizar o início da operação.
+
+### 20.2 Aprovações finais para iniciar a operação
+
+Indique quem precisa dar o “ok final” (nomes ou cargos) e como esse aceite será registrado antes da execução começar.
 
