@@ -625,23 +625,67 @@ Essas análises não terão peso estatístico formal, mas servirão para interpr
 
 ### 13.1 Validade de conclusão
 
-Liste ameaças que podem comprometer a robustez das conclusões estatísticas (baixo poder, violação de suposições, erros de medida) e como pretende mitigá-las.
+A validade de conclusão está relacionada à robustez dos procedimentos estatísticos e à capacidade de tirar conclusões corretas a partir dos dados coletados. As principais ameaças e estratégias para mitigá-las são:
+
+| Ameaça                                                  | Mitigação                                                                                                   |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Baixo poder estatístico devido a tamanhos de amostra pequenos | Planejar uma amostra mínima de 80 participantes válidos (40 por grupo) e  realizar amostragem ampla e diversificada. |
+| Violação de pressupostos de testes estatísticos         | Priorizar testes não paramétricos (Mann-Whitney U, Qui-quadrado), que não dependem de suposições de normalidade. |
+| Medidas imprecisas de tempo (M01, M01a)                 | Garantir que os tempos sejam coletados automaticamente no formulário para evitar erros manuais.            |
+| Dados inconsistentes ou com outliers extremos           | Analisar outliers caso a caso, documentando exclusões e aplicando análises robustas para evitar distorções. |
+
+---
 
 ### 13.2 Validade interna
 
-Identifique ameaças relacionadas a causas alternativas para os efeitos observados (history, maturation, selection, etc.) e explique suas estratégias de controle.
+A validade interna verifica se as observações e os efeitos observados podem ser atribuídos diretamente à manipulação do fator independente (formato LN ou GH), eliminando outras possíveis causas. Abaixo estão as potenciais ameaças e planos de controle:
+
+| Ameaça                                                                 | Mitigação                                                                                                                           |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Viés de seleção: distribuição desigual de participantes experientes entre os grupos | Coletar dados de perfil (experiência em desenvolvimento, familiaridade com Gherkin) e verificar desequilíbrios e se necessário, ajustar análises com covariáveis. |
+| Experiência prévia dos participantes com o formato de Gherkin ou BDD   | Questionar a familiaridade com Gherkin no início e realizar análises comparativas internas para controlar esse fator.               |
+| Efeito de desmotivação/fadiga durante o experimento                    | Manter o experimento curto (20–30 minutos) com enunciados diretos e bem explicados; realizar piloto para ajustar a duração do teste. |
+| Comportamento não engajado (por exemplo, participantes desatentos)     | Coletar tempo de execução e revisar manualmente as submissões para identificar participantes que não se engajaram.                 |
+| Efeito do ambiente externo ao experimento (por exemplo, distrações, multitarefa) | Orientar que os participantes realizem o experimento em ambiente livre de distrações, com tempo contínuo disponível.               |
+
+---
 
 ### 13.3 Validade de constructo
 
-Refleta se as medidas escolhidas realmente representam os conceitos de interesse e descreva como você reduzirá ambiguidades de interpretação.
+Esse aspecto avalia se as métricas e métodos de coleta realmente capturam os conceitos e variáveis que pretendemos medir. As principais ameaças e mitigações são:
+
+| Ameaça                                                                                  | Mitigação                                                                                                                                 |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Ambiguidade conceitual das métricas (por exemplo, erros de omissão e comissão podem não ser claros) | Utilizar um checklist detalhado com orientações claras para avaliadores e exemplos de cada tipo de regra/erro.                          |
+| Confusão entre diferentes aspectos do retrabalho (esforço vs. severidade)              | Medir diferentes dimensões de retrabalho separadamente.                 |
+| Fator motivacional impactando interpretação de dificuldade percebida                   | Separar de forma clara as respostas objetivas (tempo, bugs) dos comentários subjetivos.                      |
+| Simplificação artificial do problema pela ausência de um protótipo visual              | Deixar claro para os participantes que os requisitos fornecidos são simplificados devido à natureza do experimento.                     |
+
+---
 
 ### 13.4 Validade externa
 
-Discuta em que contextos os resultados podem ser generalizados e quais diferenças de cenário podem limitar essa generalização.
+A validade externa trata da aplicabilidade dos resultados do estudo a outros contextos e situações. Algumas ameaças e mitigações incluem:
+
+| Ameaça                                                                 | Mitigação                                                                                                                          |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Contexto simulado pode não refletir totalmente cenários de desenvolvimento do mundo real | Focar em tarefas práticas e representativas do contexto de interfaces críticas usadas no mercado.                                |
+| Participantes com menor experiência podem não ser representativos da população real     | Diversificar amostragem (estudantes e profissionais) e analisar a influência da experiência na análise estratificada.            |
+| Ausência de uma visualização de protótipo impacta qualidade da decisão                 | Documentar essa limitação explicitamente e discutir suas implicações nos resultados no relatório final.                          |
+
+---
 
 ### 13.5 Resumo das principais ameaças e estratégias de mitigação
 
-Faça uma síntese das ameaças mais críticas e das ações planejadas, de preferência em forma de lista ou tabela simples.
+Abaixo está uma tabela de resumo consolidando as principais ameaças e como serão abordadas:
+
+| Categoria               | Ameaças principais                                                                                 | Estratégias de mitigação principais                                                                                                             |
+| ----------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Validade de conclusão   | Amostras pequenas, medidas imprecisas, outliers extremos.                                         | Amostra mínima de 80 participantes, coleta automática de tempos, análises robustas, revisão manual de outliers.                                |
+| Validade interna        | Viés de seleção, engajamento desbalanceado, fadiga, contexto externo (distrações).               | Distribuição balanceada entre grupos; coleta de perfil para controle; experimento curto; uso claro de orientações.                             |
+| Validade de constructo  | Ambiguidades nos conceitos de erros, confusão entre aspectos de retrabalho, ausência de protótipo visual. | Checklist detalhado e documentado para avaliação. Separação de métricas objetivas e qualitativas; clareza nas instruções.                      |
+| Validade externa        | Contexto acadêmico/simulado pode diferir da prática profissional; ausência de protótipo visual.   | Diversificar participantes; explicar limitações relacionadas à generalização no relatório final.                                               |
+
 
 ---
 
@@ -649,19 +693,24 @@ Faça uma síntese das ameaças mais críticas e das ações planejadas, de pref
 
 ### 14.1 Questões éticas (uso de sujeitos, incentivos, etc.)
 
-Descreva potenciais questões éticas (pressão para participar, uso de estudantes, incentivos, riscos de exposição) e como serão tratadas.
+O experimento será totalmente voluntário, sem nenhuma pressão para participação, especialmente para estudantes ou profissionais que conhecem o pesquisador. Os participantes têm liberdade de desistir a qualquer momento, sem precisar justificar. Não haverá recompensas financeiras, mas todos receberão um resumo dos resultados após o término do estudo. Como será conduzido online, não há risco direto à saúde ou à segurança, e os dados serão coletados anonimamente, com total garantia de privacidade. A participação não terá impacto em notas ou relacionamentos institucionais, e será informada como uma oportunidade de contribuir com a pesquisa em engenharia de software, sendo um experimento de baixo risco e simples de realizar.
 
 ### 14.2 Consentimento informado
 
-Explique como os participantes serão informados sobre objetivos, riscos, benefícios e como registrarão seu consentimento.
+Antes de iniciar o experimento, os participantes deverão ler e aceitar um Termo de Consentimento Livre e Esclarecido (TCLE) eletrônico. O termo explicará o propósito do estudo, seus objetivos e como os resultados serão utilizados, além de informar que a tarefa levará cerca de 20–30 minutos. Também serão descritos os riscos (que são baixos) e a ausência de benefícios ou prejuízos diretos para os participantes. O TCLE reforçará que a participação é voluntária e que é possível desistir a qualquer momento, sem qualquer consequência. Haverá garantia de anonimização, assegurando que os dados coletados serão analisados sem associação a informações pessoais, eliminando qualquer risco de identificação. Além disso, o pesquisador responsável disponibilizará contato para que os participantes possam tirar dúvidas ou esclarecer preocupações antes, durante ou após o experimento. Por fim, será exigido que os participantes confirmem, no formulário, que compreenderam e concordaram com os termos antes de continuar com a tarefa.
 
 ### 14.3 Privacidade e proteção de dados
 
-Indique que dados pessoais serão coletados, como serão protegidos (anonimização, pseudoanonimização, controle de acesso) e por quanto tempo serão mantidos.
+Os dados coletados no experimento serão apenas de perfil técnico, como anos de experiência em desenvolvimento, familiaridade com Gherkin/BDD e nível geral de conhecimento, sem coleta de nome, e-mail ou qualquer informação que permita a identificação direta dos participantes. Todas as respostas serão registradas de forma pseudoanonimizada, utilizando identificadores numéricos, e os dados ficarão armazenados em um ambiente seguro, acessível apenas pela pesquisadora responsável e por coorientadores que estejam formalmente envolvidos no projeto. Os dados pessoais serão armazenados por até 12 meses após a conclusão do estudo, com o objetivo de possíveis revisões internas ou auditorias, e serão completamente excluídos após esse prazo. Resultados anonimizados poderão ser utilizados futuramente para fins acadêmicos ou publicações científicas. As planilhas e bancos de dados contendo as respostas serão protegidos por senha e armazenados em serviços seguros, como Google Drive institucional, com acesso restrito às pessoas diretamente envolvidas no experimento. O estudo seguirá as boas práticas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD), e nenhuma informação bruta será compartilhada ou publicada sem prévia anonimização e agregação.
+
 
 ### 14.4 Aprovações necessárias (comitê de ética, jurídico, DPO, etc.)
 
-Liste órgãos ou pessoas que precisam aprovar o experimento (comitê de ética, jurídico, DPO, gestores) e o status atual dessas aprovações.
+Comitê de Ética: O experimento será submetido ao Comitê de Ética em Pesquisa com Seres Humanos da PUC Minas, contemplando todos os requisitos como o envio do Termo de Consentimento Livre e Esclarecido (TCLE), protocolo detalhado e descrição dos riscos.
+
+Jurídico / LGPD: Caso necessário, consultaremos o Data Protection Officer (DPO) ou representantes legais da PUC Minas para garantir a adequação à Lei Geral de Proteção de Dados (LGPD) e às regulamentações internas.
+
+Gestores acadêmicos/mentores: O experimento será autorizado pelo(a) orientador(a) responsável e, quando aplicável, pelos coordenadores do programa acadêmico da PUC Minas envolvidos no projeto.
 
 ---
 
@@ -669,19 +718,47 @@ Liste órgãos ou pessoas que precisam aprovar o experimento (comitê de ética,
 
 ### 15.1 Recursos humanos e papéis
 
-Identifique os membros da equipe do experimento e descreva brevemente o papel e responsabilidade de cada um.
+- **Pesquisadora principal (Sophia Mendes Rabelo)**: Conduzirá todo o planejamento, execução e análise do experimento. Suas responsabilidades incluem o desenvolvimento do protocolo, criação dos materiais, coleta de dados, análise dos resultados, redação da documentação e interpretação das conclusões.  
+- **Orientador(a)**: Oferece suporte técnico e orientação metodológica, revisa os documentos e valida o protocolo, além de supervisionar a condução ética e acadêmica do experimento.  
+- **Participantes**: Colaboram realizando as tarefas experimentais. São elementos centrais, pois participam da atividade prática e fornecem os dados críticos para análise.  
+
+---
 
 ### 15.2 Infraestrutura técnica necessária
 
-Liste ambientes, servidores, ferramentas, repositórios e integrações que devem estar disponíveis para executar o experimento.
+- **Plataforma de coleta de dados**: Será utilizado o Google Forms para receber as respostas dos participantes, registrando informações de perfil técnico, tempos de execução e os códigos enviados.  
+- **Sistema de armazenamento seguro**: Os dados coletados serão armazenados no Google Drive institucional, com proteção por senha e acesso restrito à pesquisadora responsável, garantindo segurança e conformidade com a LGPD.  
+- **Ferramentas de análise**: As análises estatísticas e de métricas serão realizadas utilizando Python, enquanto o Google Sheets será usado na organização inicial, consolidação dos dados e cálculos simples.  
+- **Ambiente de documentação**: Para a preparação de relatórios e todo o material técnico-acadêmico, será utilizado o LaTeX, garantindo padronização, estética e qualidade na formatação da documentação.  
+
+---
 
 ### 15.3 Materiais e insumos
 
-Relacione materiais físicos ou digitais necessários (máquinas, licenças, formulários, dispositivos) que precisam estar prontos antes da operação.
+- **Formulários digitais**: Estruturas preparadas no Google Forms para as tarefas experimentais e coleta das respostas dos participantes, incluindo campos para submissão de código.  
+- **Checklists e guias de avaliação**: Documentos em LaTeX para referência e avaliação das submissões, contendo uma descrição das regras esperadas, casos de borda e critérios de análise.  
+- **Máquinas e dispositivos**: Os participantes utilizarão seus próprios computadores ou dispositivos para acessar o formulário e realizar as atividades.  
+- **Softwares gratuitos**: Google Forms, Google Sheets, Python e editores LaTeX, todos de uso gratuito.  
+- **Material de comunicação**: Produção de conteúdo digital para divulgar o experimento em redes sociais e comunidades.  
+
+---
 
 ### 15.4 Orçamento e custos estimados
 
-Faça uma estimativa dos principais custos envolvidos (horas de pessoas, serviços, licenças, infraestrutura) e a fonte de financiamento.
+O experimento será conduzido com ferramentas e recursos gratuitos, não exigindo orçamento significativo. Abaixo, um resumo:
+
+| Descrição                                   | Estimativa de custo                          | Fonte de financiamento           |
+| ------------------------------------------- | -------------------------------------------- | -------------------------------- |
+| Plataforma de formulário (Google Forms)     | Gratuito                                     | Não aplicável                    |
+| Armazenamento seguro (Google Drive)         | Gratuito até 15GB                            | Não aplicável                    |
+| Análise de dados (Python, Google Sheets)    | Gratuito                                     | Não aplicável                    |
+| Ambiente de documentação (LaTeX)            | Gratuito       | Não aplicável                    |
+| Comunicação e divulgação                    | Gratuito             | Não aplicável                    |
+
+**Custo total estimado:** R$ 0,00 (ferramentas gratuitas e trabalho voluntário).
+
+Caso algum custo inesperado surja, como a necessidade de serviços adicionais ou assinaturas, ele será financiado pela pesquisadora ou avaliado em conjunto com o orientador e a instituição.
+
 
 ---
 
@@ -689,15 +766,39 @@ Faça uma estimativa dos principais custos envolvidos (horas de pessoas, serviç
 
 ### 16.1 Macrocronograma (até o início da execução)
 
-Defina as principais datas e marcos (conclusão do plano, piloto, revisão, início da operação) com uma visão de tempo realista.
+| Atividade                                     | Período          | Descrição                                                                                                      |
+| --------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| Conclusão do plano experimental               | Nov/25           | Finalização da definição do protocolo, métricas, variáveis e demais elementos do experimento.                 |
+| Revisão pelo orientador                       | Nov/25           | Verificação do plano pelo orientador(a) e ajustes necessários antes de submissão ao comitê de ética.          |
+| Submissão ao comitê de ética                  | Nov/25 a Dez/25  | Envio do plano ao Comitê de Ética da PUC Minas e aguardo de aprovação oficial.                                |
+| Desenvolvimento dos materiais (piloto e coleta real) | Dez/25 a Jan/26 | Preparação dos formulários, checklist de avaliação, guias de execução e materiais do experimento.             |
+| Piloto: validação técnica                     | Fev/26           | Execução de um piloto de pequeno porte para validar a clareza dos requisitos e materiais.                     |
+| Ajustes no planejamento (baseados no piloto)  | Fev/26           | Implementação de melhorias identificadas durante o piloto, caso necessário.                                   |
+| Divulgação do experimento                     | Fev/26           | Divulgação ampla aos participantes-alvo por redes sociais e comunidades.                                      |
+| Início da coleta de dados                     | Fev/26 a Mar/26  | Execução da coleta de dados com os participantes.                                                              |
+
+---
 
 ### 16.2 Dependências entre atividades
 
-Indique quais atividades dependem de outras para começar (por exemplo, treinamento após aprovação ética), deixando essas dependências claras.
+- **Revisão pelo orientador**: o envio ao comitê de ética depende da aprovação do orientador(a) do plano experimental, incluindo o protocolo e materiais.  
+- **Aprovação do comitê de ética**: nada pode ser iniciado antes da aprovação oficial pelo Comitê de Ética. O piloto também depende dessa etapa.  
+- **Piloto e ajustes**: a coleta principal só poderá acontecer após o piloto validar os materiais e possíveis ajustes serem realizados.  
+- **Divulgação e coleta de dados**: a divulgação será feita após ajustes finais nos materiais e precederá o início oficial da coleta.  
+
+---
 
 ### 16.3 Riscos operacionais e plano de contingência
 
-Liste riscos ligados a cronograma, disponibilidade de pessoas ou recursos, e descreva ações de contingência caso esses riscos se materializem.
+| Risco                                           | Impacto                                           | Plano de contingência                                                                                                         |
+| ---------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Atrasos na aprovação do comitê de ética        | Adiamento do cronograma geral                     | Submeter o plano o mais rapidamente possível e desenvolver materiais enquanto se aguarda a aprovação.                         |
+| Problemas técnicos nos formulários ou análise de dados | Comprometimento da coleta ou dificuldade na análise | Testar as ferramentas no piloto; ter backups para opções como Google Forms, Python e Sheets.                                  |
+| Desistência de participantes ou baixa adesão   | Redução da amostra planejada, possível insuficiência de dados | Intensificar divulgação em grupos de tecnologia, redes sociais e canais acadêmicos, recrutando novos participantes.          |
+| Falta de engajamento ou respostas inválidas    | Submissões mal feitas, impacto na qualidade dos dados | Explicar as instruções detalhadamente e revisar manualmente as respostas para identificar submissões inválidas.              |
+| Coincidência com início do ano letivo          | Menor disponibilidade de participantes            | Estender o período de coleta por mais tempo e intensificar a divulgação em comunidades acadêmicas e profissionais.           |
+| Problemas de interpretação dos requisitos no piloto | Demandas de reescrita e ajustes                  | Planejar um piloto iterativo e depurar os requisitos antes da divulgação da coleta principal.                                |
+
 
 ---
 
@@ -705,15 +806,38 @@ Liste riscos ligados a cronograma, disponibilidade de pessoas ou recursos, e des
 
 ### 17.1 Papéis e responsabilidades formais
 
-Defina quem decide, quem executa, quem revisa e quem apenas deve ser informado, deixando claro o fluxo de responsabilidade.
+- **Pesquisadora principal (Sophia Mendes Rabelo)**: Responsável por todo o planejamento, execução e análise do experimento. Decide sobre mudanças no plano, ajustes metodológicos e interpretações dos resultados.  
+- **Orientador(a)**: Faz revisões críticas sobre o planejamento e valida alterações, garantindo que as decisões mantenham o rigor acadêmico e ético.  
+- **Participantes**: Executam as tarefas do experimento, fornecem dados para análise e contribuem com potenciais insights qualitativos.  
+- **Comitê de Ética da PUC Minas**: Aprova o protocolo do estudo, garantindo que a pesquisa segue princípios éticos e de proteção aos participantes.  
+
+**Fluxo de responsabilidade:**
+
+- **Decisores**: Pesquisadora principal e orientador(a).  
+- **Executores**: Pesquisadora principal e participantes.  
+- **Revisores**: Orientador(a) e Comitê de Ética.  
+- **Informados**: Participantes e potenciais stakeholders (como coorientadores ou supervisores).  
+
+---
 
 ### 17.2 Ritos de acompanhamento pré-execução
 
-Descreva as reuniões, checkpoints e revisões previstos antes da execução, incluindo frequência e participantes.
+- **Revisão inicial do plano (pelo orientador)**: reunião ao término do rascunho final do plano, ajustando aspectos metodológicos e éticos, com foco na clareza e viabilidade do experimento.  
+- **Checkpoint durante a aprovação ética**: reunião ou troca de e-mails para acompanhar o status da submissão junto ao Comitê de Ética, ajustando qualquer feedback solicitado.  
+- **Revisão final dos materiais**: após o piloto, haverá uma validação dos formulários, guias e checklist de avaliação com o orientador(a), garantindo que estejam prontos para a coleta principal.  
+
+**Frequência:** as reuniões serão realizadas por demanda e em momentos específicos (revisões críticas), mas trocas de e-mails e atualizações assíncronas servirão para garantir fluidez no processo.
+
+---
 
 ### 17.3 Processo de controle de mudanças no plano
 
-Explique como mudanças no desenho ou no escopo do experimento serão propostas, analisadas, aprovadas e registradas.
+1. **Proposta de mudança**: se necessário, a pesquisadora principal elabora um documento detalhando a mudança proposta, incluindo a justificativa, impacto esperado e alternativa sugerida.  
+2. **Análise**: a proposta será revisada pelo orientador(a) para avaliar a relevância e validade técnica/metodológica.  
+3. **Aprovação**:  
+   - Alterações de pequena escala (ex.: ajustes no formulário) podem ser diretamente implementadas pela pesquisadora.  
+   - Mudanças significativas (ex.: no objetivo ou escopo) exigem validação formal do orientador(a) e, se necessário, nova submissão ao Comitê de Ética.  
+4. **Registro**: qualquer alteração aprovada será documentada em um arquivo de versão dentro do plano experimental, com indicação da data e motivo da mudança.  
 
 ---
 
@@ -721,15 +845,41 @@ Explique como mudanças no desenho ou no escopo do experimento serão propostas,
 
 ### 18.1 Repositórios e convenções de nomeação
 
-Indique onde o plano, instrumentos, scripts e dados (futuros) serão armazenados e quais convenções de nomes serão usadas.
+- **Local de armazenamento**:  
+  - O plano do experimento, materiais de coleta (formulários, checklist, etc.), scripts e dados coletados serão armazenados no Google Drive institucional.  
+  - Scripts de análise e resultados interpretados poderão ser mantidos em um repositório controlado do GitHub ou similar.  
+
+- **Convenções de nomeação**: arquivos seguirão o padrão  
+  `"[Tipo do Documento]_[Versão]_[Data].ext"`, por exemplo:
+
+  - `Plano_Experimento_v1_2025-11-20.pdf`  
+  - `Checklist_Avaliacao_v1_2025-12-15.docx`  
+  - `Scripts_Analise_v2_2026-03-01.py`  
+
+---
 
 ### 18.2 Templates e artefatos padrão
 
-Liste os modelos (questionários, formulários, checklists, scripts) que serão usados e onde podem ser encontrados.
+Os seguintes modelos e artefatos serão utilizados durante o experimento:
+
+- **Formulários de coleta (Google Forms)**: estruturados para incluir as tarefas do experimento, coleta de perfil técnico e envio de código.  
+- **Checklist de avaliação**: documento usado para atribuir métricas (erros de lógica, omissões etc.) às submissões dos participantes.  
+- **Scripts de análise (Python)**: scripts para calcular estatísticas descritivas e realizar testes comparativos entre os grupos.  
+- **Termo de Consentimento Livre e Esclarecido (TCLE)**: elaborado e aprovado pelo Comitê de Ética.  
+- **Templates LaTeX**: para elaboração e organização de relatórios e artigos futuros.  
+
+Todos os modelos e scripts serão armazenados junto ao repositório de dados e estarão organizados por categorias para facilitar o acesso.
+
+---
 
 ### 18.3 Plano de empacotamento para replicação futura
 
-Descreva o que será organizado desde já (documentos, scripts, instruções) para facilitar a replicação do experimento por outras equipes ou no futuro.
+Para facilitar a replicação do experimento por outras equipes no futuro, serão organizados os seguintes itens:
+
+- **Plano detalhado**: documento contendo todos os aspectos metodológicos do experimento, com instruções sobre como recriar o estudo.  
+- **Guias de uso**: instruções detalhadas sobre o uso dos formulários, checklist e scripts de análise, incluindo pré-requisitos e exemplos de execuções.  
+- **Scripts de análise completos**: código em Python comentado e com documentação clara, para que outros pesquisadores possam reutilizá-lo.  
+- **Resumo dos resultados e aprendizado**: seção explicando lições aprendidas, pontos críticos e melhorias sugeridas para estudos futuros, com base na experiência acumulada.  
 
 ---
 
@@ -737,15 +887,32 @@ Descreva o que será organizado desde já (documentos, scripts, instruções) pa
 
 ### 19.1 Públicos e mensagens-chave pré-execução
 
-Liste os grupos que precisam ser comunicados e quais mensagens principais devem receber (objetivos, escopo, datas, impactos esperados).
+Principais públicos-alvo e mensagens:
+
+- **Orientador(a)**: atualizações e revisões para garantir a solidez do planejamento e alinhamento com os objetivos acadêmicos.  
+- **Comitê de Ética**: receber o plano completo, com TCLE, para avaliação e aprovação formal.  
+- **Participantes**: fornecer informações claras sobre o objetivo do experimento, tempo estimado e contextualização da importância da pesquisa em engenharia de software.  
+- **Comunidades de tecnologia (divulgação)**: mensagens alinhadas à linguagem técnica, destacando a participação como uma contribuição acadêmica e profissional, sem custos.  
+
+---
 
 ### 19.2 Canais e frequência de comunicação
 
-Defina por quais canais (e-mail, reuniões, Slack/Teams, etc.) e com que frequência as comunicações serão feitas.
+| Público                 | Canal de Comunicação                   | Frequência/Prazos                      |
+| ----------------------- | -------------------------------------- | -------------------------------------- |
+| Orientador(a)           | Reuniões e e-mails                     | A cada marco crítico do experimento    |
+| Comitê de Ética         | Plataforma oficial da PUC Minas        | Uma submissão inicial; ajustes se necessário |
+| Participantes           | Google Forms, redes sociais, e-mails   | Campanhas na divulgação e durante a coleta |
+| Comunidades tecnológicas | Postagens no LinkedIn, WhatsApp, Discord | No início e com reforços ao longo da divulgação |
+
+---
 
 ### 19.3 Pontos de comunicação obrigatórios
 
-Especifique os eventos que exigem comunicação formal (aprovação do plano, mudanças relevantes, adiamentos, cancelamentos).
+- **Submissão ao Comitê de Ética**: informar formalmente o envio do plano e compartilhar respostas ou feedback recebido.  
+- **Concluída a etapa de revisão**: atualização para o orientador(a) e stakeholders sobre ajustes ou etapas concluídas.  
+- **Mudanças relevantes no plano**: comunicar ao orientador e participantes caso o escopo ou instruções sejam alterados.  
+- **Encerramento da coleta**: informar os participantes interessados sobre o término e o início da análise de dados.  
 
 ---
 
@@ -753,9 +920,19 @@ Especifique os eventos que exigem comunicação formal (aprovação do plano, mu
 
 ### 20.1 Checklist de prontidão (itens que devem estar completos)
 
-Liste os itens que precisam estar finalizados e aprovados (plano, instrumentos, aprovação ética, recursos, comunicação) para autorizar o início da operação.
+Antes do início da coleta, os seguintes itens precisam estar concluídos:
+
+- **Plano experimental aprovado**: revisado pelo orientador(a) e aprovado pelo Comitê de Ética da PUC Minas.  
+- **Materiais finalizados**: formulários, checklist de avaliação e guias devidamente validados no piloto.  
+- **Teste no piloto**: condução de um piloto de validação técnica com ajustes realizados, se necessários.  
+- **Infraestrutura técnica em funcionamento**: todos os sistemas testados (Google Forms, armazenamento no Google Drive, Python).  
+- **Campanha de divulgação pronta**: estratégia de comunicação clara e materiais prontos para atrair participantes.  
+
+---
 
 ### 20.2 Aprovações finais para iniciar a operação
 
-Indique quem precisa dar o “ok final” (nomes ou cargos) e como esse aceite será registrado antes da execução começar.
+- **Orientador(a)**: deve dar o aval final para o início da coleta de dados, atestando a maturidade do plano e dos materiais.  
+- **Comitê de Ética**: aprovação formal confirmada antes da execução de qualquer etapa que envolva participantes humanos.  
+
 
